@@ -19,5 +19,5 @@ These instructions will get you a copy of the project up and running on your loc
 Follow the instruction mentioned bellow. Type the following command in your git bash-
 
 1. git clone https://github.com/aseefahmed/TasksSoding.git
-2. composer update
+2. composer install
 3. php artisan migrate
