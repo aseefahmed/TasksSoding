@@ -13,9 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 3. Squlite Database
 4. composer (PHP Package manager)
 
-### Installing
-
-## To create a project from this repository:
+## Installing:
 Follow the instruction mentioned bellow. Type the following command in your git bash-
 
 1. git clone https://github.com/aseefahmed/TasksSoding.git
