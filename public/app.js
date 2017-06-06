@@ -1,5 +1,5 @@
 var app = {};
-app.host = "http://localhost/tasks_soding/mytasks/";
+app.host = "http://localhost/";
 
 myApp = angular.module('myApp', [], function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');

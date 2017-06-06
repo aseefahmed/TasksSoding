@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Installing:
 Follow the instruction mentioned bellow. Type the following command in your git bash-
 
-1. git clone https://github.com/aseefahmed/TasksSoding.git
+1. git clone https://github.com/aseefahmed/TasksSoding.git. Make sure you download it to your web root folder(htdocs for xamp or www for wamp).
 2. composer install
 3. php artisan migrate
 
