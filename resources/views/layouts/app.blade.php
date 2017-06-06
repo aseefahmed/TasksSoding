@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" ng-app="myApp">
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -62,6 +62,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/tasks') }}"><i class="fa fa-btn fa-plus"></i>Create Task</a></li>
+                                <li><a href="{{ url('/tasks/list') }}"><i class="fa fa-btn fa-eye"></i>View Tasks</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -76,6 +78,7 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="{{ asset('public/app.js') }}"></script>
 </body>
 </html>

@@ -6,25 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\Task;
 use App\Repositories\TaskRepository;
 
 class TaskController extends Controller
 {
-    /**
-     * The task repository instance.
-     *
-     * @var TaskRepository
-     */
-    protected $tasks;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param  TaskRepository  $tasks
-     * @return void
-     */
     public function __construct(TaskRepository $tasks)
     {
         $this->middleware('auth');
@@ -32,25 +21,16 @@ class TaskController extends Controller
         $this->tasks = $tasks;
     }
 
-    /**
-     * Display a list of all of the user's task.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
     public function index(Request $request)
     {
-        return view('tasks.index', [
-            'tasks' => $this->tasks->forUser($request->user()),
-        ]);
+        return view('tasks.index');
     }
 
-    /**
-     * Create a new task.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+    public function getTasks()
+    {
+        return view('tasks.list');
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -61,16 +41,30 @@ class TaskController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('/tasks');
+        return redirect('/tasks/list')->with('msg', 'Task has been created successfully.');
     }
 
-    /**
-     * Destroy the given task.
-     *
-     * @param  Request  $request
-     * @param  Task  $task
-     * @return Response
-     */
+    public function deleteTask($id)
+    {
+        if(DB::table('tasks')->where('id', $id)->delete())
+            return 1;
+        else
+            return -1;
+    }
+
+    public function editTask(Request $request)
+    {
+        DB::table('tasks')->where('id', $request->task_id)->update([
+                'name' => $request->task_name
+            ]);
+    }
+
+    public function getTaskList(Request $request)
+    {
+        $data['tasks'] = DB::table('tasks')->where('user_id', Auth::user()->id)->get();
+        return $data;
+    }
+
     public function destroy(Request $request, Task $task)
     {
         $this->authorize('destroy', $task);
