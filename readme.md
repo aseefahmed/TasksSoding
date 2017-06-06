@@ -21,3 +21,11 @@ Follow the instruction mentioned bellow. Type the following command in your git 
 1. git clone https://github.com/aseefahmed/TasksSoding.git
 2. composer install
 3. php artisan migrate
+
+### How to use this application
+
+1. Register yourself first with your name, email address and password. 
+2. Then log in to the system with your email address and password.
+3. Create task from the drop down menu located in the left..
+4. View tasks list from the drop down menu located in the left.
+5. From the tasks list, you can edit or delete a particular task.
